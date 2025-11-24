@@ -1,0 +1,20 @@
+{
+  "name": "@design-system",
+  "version": "0.1.0",
+  "types": "./types/index.d.ts",
+  "main": "dist/cjs",
+  "module": "dist/esm",
+  "module:jsx": "dist/jsx",
+  "files": ["types", "src", "dist"],
+  "sideEffects": ["*.css"],
+  "dependencies": {
+    "@tamagui/core": "*"
+  },
+  "scripts": {
+    "build": "tamagui-build",
+    "watch": "tamagui-build --watch"
+  },
+  "devDependencies": {
+    "@tamagui/build": "*"
+  }
+}

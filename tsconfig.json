@@ -1,0 +1,12 @@
+{
+  "types": ["node", "react"],
+  "lib": ["dom", "esnext"],
+  "compilerOptions": {
+    "baseUrl": "./", // resolve absolute module names from here
+    "outDir": "dist"
+  },
+  "include": ["./**/*.ts"],
+  "exclude": [
+    "node_modules/**/*"
+  ]
+}
