@@ -1,89 +1,139 @@
-import { getSize, getSpace } from '@tamagui/get-token'
-import {
-  GetProps,
-  SizeTokens,
-  View,
-  Text,
-  createStyledContext,
-  styled,
-  useTheme,
-  withStaticProperties,
-} from '@tamagui/web'
-import { cloneElement, isValidElement, useContext } from 'react'
+import { styled, Pressable, Text } from "tamagui";
 
-export const ButtonContext = createStyledContext({
-  size: '$md' as SizeTokens,
-})
+// Colors and tokens from CSS
+const COLORS = {
+  primary: "#ffc23e",
+  primaryHover: "#ffc23e",
+  primaryActive: "#ffc23e",
+  primaryText: "#0c0d0d",
+  primarySuccess: "#008700",
+  primarySuccessHover: "#007200",
+  primaryError: "#cc3123",
+  primaryErrorHover: "#b02215",
+  primaryWarning: "#c75000",
+  primaryDisabled: "#d3d3d3",
+  secondary: "#fff",
+  secondaryBorder: "#c75000",
+  secondaryText: "#c75000",
+  secondaryDisabled: "#d3d3d3",
+  shadow: "0 6px 10px rgba(0,0,0,.14),0 1px 18px rgba(0,0,0,.12)",
+  disabledShadow: "none",
+};
 
-export const ButtonFrame = styled(View, {
-  name: 'Button',
-  context: ButtonContext,
-  backgroundColor: '$background',
-  alignItems: 'center',
-  flexDirection: 'row',
-
-  hoverStyle: {
-    backgroundColor: '$backgroundHover',
-  },
-
-  pressStyle: {
-    backgroundColor: '$backgroundPress',
-  },
+export const ButtonDXPlus = styled(Pressable, {
+  name: "ButtonDXPlus",
+  borderRadius: 8,
+  display: "inline-flex",
+  verticalAlign: "bottom",
+  outlineOffset: 0,
+  userSelect: "none",
+  transitionProperty: "box-shadow, transform",
+  transitionDuration: ".175s",
+  transitionTimingFunction: "ease",
 
   variants: {
-    size: {
-      '...size': (name, { tokens }) => {
-        return {
-          height: tokens.size[name],
-          borderRadius: tokens.radius[name],
-          // note the getSpace and getSize helpers will let you shift down/up token sizes
-          // whereas with gap we just multiply by 0.2
-          // this is a stylistic choice, and depends on your design system values
-          gap: tokens.space[name].val * 0.2,
-          paddingHorizontal: getSpace(name, {
-            shift: -1,
-          }),
-        }
+    variant: {
+      primary: {
+        backgroundColor: COLORS.primary,
+        borderWidth: 1,
+        borderColor: COLORS.primary,
+      },
+      secondary: {
+        backgroundColor: COLORS.secondary,
+        borderWidth: 1,
+        borderColor: COLORS.secondaryBorder,
       },
     },
-  } as const,
-
-  defaultVariants: {
-    size: '$md',
-  },
-})
-
-type ButtonProps = GetProps<typeof ButtonFrame>
-
-export const ButtonText = styled(Text, {
-  name: 'ButtonText',
-  context: ButtonContext,
-  color: '$color',
-  userSelect: 'none',
-
-  variants: {
     size: {
-      '...fontSize': (name, { font }) => ({
-        fontSize: font?.size[name],
-      }),
+      s: { padding: ".1875rem .4375rem" },
+      m: { padding: ".4375rem 1.4375rem" },
+      l: { padding: ".625rem 1.4375rem" },
     },
-  } as const,
-})
+    disabled: {
+      true: {
+        cursor: "not-allowed",
+        boxShadow: COLORS.disabledShadow,
+        backgroundColor: COLORS.primaryDisabled,
+        color: "#fff",
+        borderColor: COLORS.primaryDisabled,
+      },
+    },
+    status: {
+      default: {},
+      success: {},
+      error: {},
+      warning: {},
+    },
+  },
 
-const ButtonIcon = (props: { children: any }) => {
-  const { size } = useContext(ButtonContext.context)
-  const smaller = getSize(size, {
-    shift: -2,
-  })
-  const theme = useTheme()
-  return isValidElement(props.children) ? cloneElement(props.children, {
-    size: smaller.val * 0.5,
-    color: theme.color.get(),
-  }) : null
+  hoverStyle: {
+    transform: "translateY(-.0625rem)",
+    boxShadow: COLORS.shadow,
+  },
+  pressStyle: {
+    transform: "none",
+    boxShadow: "none",
+  },
+});
+
+export function Button({
+  children,
+  variant = "primary",
+  size = "m",
+  status = "default",
+  disabled = false,
+  ...props
+}) {
+  // Compute colors based on status
+  let bgColor = COLORS.primary;
+  let textColor = COLORS.primaryText;
+  let borderColor = COLORS.primary;
+
+  if (variant === "primary") {
+    if (status === "success") {
+      bgColor = COLORS.primarySuccess;
+      textColor = "#fff";
+      borderColor = COLORS.primarySuccess;
+    } else if (status === "error") {
+      bgColor = COLORS.primaryError;
+      textColor = "#fff";
+      borderColor = COLORS.primaryError;
+    } else if (status === "warning") {
+      bgColor = COLORS.primaryWarning;
+      textColor = "#fff";
+      borderColor = COLORS.primaryWarning;
+    }
+  }
+
+  if (variant === "secondary") {
+    bgColor = COLORS.secondary;
+    textColor = COLORS.secondaryText;
+    borderColor = COLORS.secondaryBorder;
+
+    if (status === "success") borderColor = COLORS.primarySuccess;
+    if (status === "error") borderColor = COLORS.primaryError;
+    if (status === "warning") borderColor = COLORS.primaryWarning;
+  }
+
+  if (disabled) {
+    bgColor = COLORS.primaryDisabled;
+    textColor = "#fff";
+    borderColor = COLORS.primaryDisabled;
+  }
+
+  return (
+    <ButtonDXPlus
+      variant={variant}
+      size={size}
+      disabled={disabled}
+      style={{ backgroundColor: bgColor, borderColor }}
+      {...props}
+    >
+      <Text
+        style={{ color: textColor, textAlign: "center", fontWeight: 600 }}
+      >
+        {children}
+      </Text>
+    </ButtonDXPlus>
+  );
 }
-
-export const Button = withStaticProperties(ButtonFrame, {
-  Props: ButtonContext.Provider,
-  Text: ButtonText,
-  Icon: ButtonIcon,
-})
