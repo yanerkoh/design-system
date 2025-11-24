@@ -9,7 +9,8 @@
   "files": [
     "types",
     "src",
-    "dist"
+    "dist",
+    "tamagui.config.js"
   ],
   "sideEffects": [
     "*.css"
