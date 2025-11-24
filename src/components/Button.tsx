@@ -1,35 +1,36 @@
-import { styled, Pressable, Text } from "tamagui";
+import React from 'react'
+import { styled, Button as TamaguiButton, Text } from 'tamagui'
 
-// Colors and tokens from CSS
 const COLORS = {
-  primary: "#ffc23e",
-  primaryHover: "#ffc23e",
-  primaryActive: "#ffc23e",
-  primaryText: "#0c0d0d",
-  primarySuccess: "#008700",
-  primarySuccessHover: "#007200",
-  primaryError: "#cc3123",
-  primaryErrorHover: "#b02215",
-  primaryWarning: "#c75000",
-  primaryDisabled: "#d3d3d3",
-  secondary: "#fff",
-  secondaryBorder: "#c75000",
-  secondaryText: "#c75000",
-  secondaryDisabled: "#d3d3d3",
-  shadow: "0 6px 10px rgba(0,0,0,.14),0 1px 18px rgba(0,0,0,.12)",
-  disabledShadow: "none",
-};
+  primary: '#ffc23e',
+  primaryHover: '#ffc23e',
+  primaryActive: '#ffc23e',
+  primaryText: '#0c0d0d',
+  primarySuccess: '#008700',
+  primarySuccessHover: '#007200',
+  primaryError: '#cc3123',
+  primaryErrorHover: '#b02215',
+  primaryWarning: '#c75000',
+  primaryDisabled: '#d3d3d3',
+  secondary: '#fff',
+  secondaryBorder: '#c75000',
+  secondaryText: '#c75000',
+  secondaryDisabled: '#d3d3d3',
+  shadow: '0 6px 10px rgba(0,0,0,.14),0 1px 18px rgba(0,0,0,.12)',
+  disabledShadow: 'none',
+}
 
-export const ButtonDXPlus = styled(Pressable, {
-  name: "ButtonDXPlus",
+export const ButtonDXPlus = styled(TamaguiButton, {
+  name: 'ButtonDXPlus',
   borderRadius: 8,
-  display: "inline-flex",
-  verticalAlign: "bottom",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   outlineOffset: 0,
-  userSelect: "none",
-  transitionProperty: "box-shadow, transform",
-  transitionDuration: ".175s",
-  transitionTimingFunction: "ease",
+  userSelect: 'none',
+  transitionProperty: 'box-shadow, transform',
+  transitionDuration: '.175s',
+  transitionTimingFunction: 'ease',
 
   variants: {
     variant: {
@@ -45,16 +46,16 @@ export const ButtonDXPlus = styled(Pressable, {
       },
     },
     size: {
-      s: { padding: ".1875rem .4375rem" },
-      m: { padding: ".4375rem 1.4375rem" },
-      l: { padding: ".625rem 1.4375rem" },
+      s: { paddingVertical: 6, paddingHorizontal: 7 },
+      m: { paddingVertical: 10, paddingHorizontal: 23 },
+      l: { paddingVertical: 15, paddingHorizontal: 23 },
     },
     disabled: {
       true: {
-        cursor: "not-allowed",
+        cursor: 'not-allowed',
         boxShadow: COLORS.disabledShadow,
         backgroundColor: COLORS.primaryDisabled,
-        color: "#fff",
+        color: '#fff',
         borderColor: COLORS.primaryDisabled,
       },
     },
@@ -67,58 +68,67 @@ export const ButtonDXPlus = styled(Pressable, {
   },
 
   hoverStyle: {
-    transform: "translateY(-.0625rem)",
+    transform: 'translateY(-0.0625rem)',
     boxShadow: COLORS.shadow,
   },
   pressStyle: {
-    transform: "none",
-    boxShadow: "none",
+    transform: 'none',
+    boxShadow: 'none',
   },
-});
+})
+
+type Props = {
+  children?: React.ReactNode
+  variant?: 'primary' | 'secondary'
+  size?: 's' | 'm' | 'l'
+  status?: 'default' | 'success' | 'error' | 'warning'
+  disabled?: boolean
+  [key: string]: any
+}
 
 export function Button({
   children,
-  variant = "primary",
-  size = "m",
-  status = "default",
+  variant = 'primary',
+  size = 'm',
+  status = 'default',
   disabled = false,
   ...props
-}) {
-  // Compute colors based on status
-  let bgColor = COLORS.primary;
-  let textColor = COLORS.primaryText;
-  let borderColor = COLORS.primary;
+}: Props) {
+  // you can still compute styles and override props before passing to Tamagui Button
+  let bgColor = COLORS.primary
+  let textColor = COLORS.primaryText
+  let borderColor = COLORS.primary
 
-  if (variant === "primary") {
-    if (status === "success") {
-      bgColor = COLORS.primarySuccess;
-      textColor = "#fff";
-      borderColor = COLORS.primarySuccess;
-    } else if (status === "error") {
-      bgColor = COLORS.primaryError;
-      textColor = "#fff";
-      borderColor = COLORS.primaryError;
-    } else if (status === "warning") {
-      bgColor = COLORS.primaryWarning;
-      textColor = "#fff";
-      borderColor = COLORS.primaryWarning;
+  if (variant === 'primary') {
+    if (status === 'success') {
+      bgColor = COLORS.primarySuccess
+      textColor = '#fff'
+      borderColor = COLORS.primarySuccess
+    } else if (status === 'error') {
+      bgColor = COLORS.primaryError
+      textColor = '#fff'
+      borderColor = COLORS.primaryError
+    } else if (status === 'warning') {
+      bgColor = COLORS.primaryWarning
+      textColor = '#fff'
+      borderColor = COLORS.primaryWarning
     }
   }
 
-  if (variant === "secondary") {
-    bgColor = COLORS.secondary;
-    textColor = COLORS.secondaryText;
-    borderColor = COLORS.secondaryBorder;
+  if (variant === 'secondary') {
+    bgColor = COLORS.secondary
+    textColor = COLORS.secondaryText
+    borderColor = COLORS.secondaryBorder
 
-    if (status === "success") borderColor = COLORS.primarySuccess;
-    if (status === "error") borderColor = COLORS.primaryError;
-    if (status === "warning") borderColor = COLORS.primaryWarning;
+    if (status === 'success') borderColor = COLORS.primarySuccess
+    if (status === 'error') borderColor = COLORS.primaryError
+    if (status === 'warning') borderColor = COLORS.primaryWarning
   }
 
   if (disabled) {
-    bgColor = COLORS.primaryDisabled;
-    textColor = "#fff";
-    borderColor = COLORS.primaryDisabled;
+    bgColor = COLORS.primaryDisabled
+    textColor = '#fff'
+    borderColor = COLORS.primaryDisabled
   }
 
   return (
@@ -126,14 +136,15 @@ export function Button({
       variant={variant}
       size={size}
       disabled={disabled}
+      // prefer Tamagui props for styling, but inline style override is allowed
       style={{ backgroundColor: bgColor, borderColor }}
       {...props}
     >
-      <Text
-        style={{ color: textColor, textAlign: "center", fontWeight: 600 }}
-      >
+      <Text fontWeight={600} color={textColor} alignSelf="center">
         {children}
       </Text>
     </ButtonDXPlus>
-  );
+  )
 }
+
+export default Button

@@ -6,10 +6,17 @@
   "module": "src/index.ts",
   "react-native": "src/index.ts",
   "module:jsx": "dist/jsx",
-  "files": ["types", "src", "dist"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "types",
+    "src",
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "dependencies": {
-    "@tamagui/core": "*"
+    "@tamagui/core": "*",
+    "tamagui": "^1.138.2"
   },
   "scripts": {
     "build": "tamagui-build",
