@@ -5,7 +5,7 @@ export default {
       {
         exclude: /node_modules/,
         config: './tamagui.config.ts',
-        components: ['@design-system', 'tamagui']
+        components: ['design-system', 'tamagui']
       },
     ],
   ],

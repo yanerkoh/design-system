@@ -2,6 +2,6 @@
   loader: 'tamagui-loader',
   options: {
     config: './tamagui.config.ts',
-    components: ['@unified-app/components', 'tamagui'],
+    components: ['design-system', 'tamagui'],
   },
 }

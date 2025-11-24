@@ -1,9 +1,10 @@
 {
-  "name": "@design-system",
+  "name": "design-system",
   "version": "0.1.0",
   "types": "./types/index.d.ts",
-  "main": "dist/cjs",
-  "module": "dist/esm",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "react-native": "src/index.ts",
   "module:jsx": "dist/jsx",
   "files": ["types", "src", "dist"],
   "sideEffects": ["*.css"],
