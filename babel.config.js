@@ -4,7 +4,7 @@ export default {
       '@tamagui/babel-plugin',
       {
         exclude: /node_modules/,
-        config: './tamagui.config.ts',
+        config: './tamagui.config.js',
         components: ['design-system', 'tamagui']
       },
     ],

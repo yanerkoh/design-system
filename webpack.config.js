@@ -1,7 +1,7 @@
 {
   loader: 'tamagui-loader',
   options: {
-    config: './tamagui.config.ts',
+    config: './tamagui.config.js',
     components: ['design-system', 'tamagui'],
   },
 }
