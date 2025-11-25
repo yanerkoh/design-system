@@ -1,12 +1,10 @@
 // tamagui.config.js
 import { createTamagui } from 'tamagui'
-import { themes } from 'tamagui/themes'
-import { tokens } from 'tamagui/tokens'
-import { shorthands } from 'tamagui/shorthands'
+import { themes, tokens, shorthands } from '@tamagui/core'
 
-import { Button } from './src/components/Button'
-import { FormGroup } from './src/components/FormGroup'
-import { StepIndicator } from './src/components/StepIndicator'
+import { Button } from './dist/components/Button'
+import { FormGroup } from './dist/components/FormGroup'
+import { StepIndicator } from './dist/components/StepIndicator'
 
 export default createTamagui({
   themes,
