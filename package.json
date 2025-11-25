@@ -8,8 +8,7 @@
   "module:jsx": "dist/jsx",
   "files": [
     "dist",
-    "tamagui.config.js",
-    "src/components"
+    "tamagui.config.js"
   ],
   "sideEffects": [
     "*.css"
@@ -19,7 +18,7 @@
     "tamagui": "^1.138.2"
   },
   "scripts": {
-    "build": "tsup src/index.tsx src/tamagui.config.ts --dts --format esm,cjs --splitting",
+    "build": "tsup src/index.tsx src/tamagui.config.ts src/components/**/*.tsx --dts --format esm,cjs --splitting",
     "watch": "tamagui-build --watch"
   },
   "peerDependencies": {

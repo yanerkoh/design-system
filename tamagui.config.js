@@ -2,10 +2,9 @@
 import { createTamagui } from 'tamagui'
 import { themes, tokens, shorthands } from '@tamagui/core'
 
-import { Button } from './src/components/Button'
-import { FormGroup } from './src/components/FormGroup'
-// import the actual export name and alias it for the config
-import { DXPlusStepIndicator } from './src/components/StepIndicator'
+import { Button } from './dist/components/Button'
+import { FormGroup } from './dist/components/FormGroup'
+import { DXPlusStepIndicator } from './dist/components/StepIndicator'
 
 export const config = createTamagui({
   themes,
