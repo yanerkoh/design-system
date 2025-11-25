@@ -1,6 +1,6 @@
 import { TamaguiProvider, View } from '@tamagui/core'
 import type { TamaguiInternalConfig } from '@tamagui/web'
-import { config } from './tamagui.config' // your configuration
+import { config } from './src/tamagui.config' // your configuration
 
 export default function App() {
   return (

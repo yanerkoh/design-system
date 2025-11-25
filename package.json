@@ -1,16 +1,13 @@
 {
   "name": "design-system",
-  "version": "0.1.1",
-  "types": "./types/index.d.ts",
-  "main": "src/index.tsx",
+  "version": "0.1.0",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "module": "src/index.tsx",
   "react-native": "src/index.tsx",
   "module:jsx": "dist/jsx",
   "files": [
-    "types",
-    "src",
-    "dist",
-    "tamagui.config.js"
+    "dist"
   ],
   "sideEffects": [
     "*.css"
@@ -20,7 +17,7 @@
     "tamagui": "^1.138.2"
   },
   "scripts": {
-    "build": "tamagui-build",
+    "build": "tsup src/index.tsx src/tamagui.config.ts --dts --format esm,cjs --splitting",
     "watch": "tamagui-build --watch"
   },
   "peerDependencies": {
@@ -34,6 +31,7 @@
     "tamagui": "^1.138.2",
     "@tamagui/core": "^1.138.2",
     "@tamagui/config": "^1.138.2",
-    "@tamagui/build": "*"
+    "@tamagui/build": "*",
+    "tsup": "^6.0.0"
   }
 }
