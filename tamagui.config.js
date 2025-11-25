@@ -2,9 +2,9 @@
 import { createTamagui } from 'tamagui'
 import { themes, tokens, shorthands } from '@tamagui/core'
 
-import { Button } from './dist/components/Button'
-import { FormGroup } from './dist/components/FormGroup'
-import { StepIndicator } from './dist/components/StepIndicator'
+import { Button } from './src/components/Button'
+import { FormGroup } from './src/components/FormGroup'
+import { StepIndicator } from './src/components/StepIndicator'
 
 export default createTamagui({
   themes,

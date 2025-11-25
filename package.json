@@ -8,7 +8,8 @@
   "module:jsx": "dist/jsx",
   "files": [
     "dist",
-    "tamagui.config.js"
+    "tamagui.config.js",
+    "src/components"
   ],
   "sideEffects": [
     "*.css"
