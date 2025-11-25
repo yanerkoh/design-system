@@ -1,11 +1,11 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import React from 'react';
+import react__default from 'react';
 
 type FormGroupProps = {
     label?: string;
     description?: string;
     error?: string;
-    children?: React.ReactNode;
+    children?: react__default.ReactNode;
 };
 declare function FormGroup({ label, description, error, children }: FormGroupProps): react_jsx_runtime.JSX.Element;
 type FormGroupDXPlusProps = {
@@ -13,9 +13,9 @@ type FormGroupDXPlusProps = {
     required?: boolean;
     description?: string;
     error?: string;
-    children?: React.ReactNode;
+    children?: react__default.ReactNode;
     spacing?: string | number;
 };
-declare const FormGroupDXPlus: React.FC<FormGroupDXPlusProps>;
+declare const FormGroupDXPlus: react__default.FC<FormGroupDXPlusProps>;
 
 export { FormGroup, FormGroupDXPlus };

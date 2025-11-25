@@ -1,21 +1,21 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
+import * as react from 'react';
 import * as tamagui from 'tamagui';
 import * as _tamagui_core from '@tamagui/core';
 import { GetProps } from '@tamagui/core';
-import React from 'react';
 
 declare const ButtonDXPlus: tamagui.TamaguiComponent<_tamagui_core.TamaDefer, tamagui.TamaguiElement, _tamagui_core.RNTamaguiViewNonStyleProps & tamagui.TextContextStyles & {
     textProps?: Partial<tamagui.SizableTextProps>;
     noTextWrap?: boolean;
 } & _tamagui_core.ThemeableProps & {
-    icon?: React.JSX.Element | React.FunctionComponent<{
+    icon?: react.JSX.Element | react.FunctionComponent<{
         color?: any;
         size?: any;
     }> | ((props: {
         color?: any;
         size?: any;
     }) => any) | null;
-    iconAfter?: React.JSX.Element | React.FunctionComponent<{
+    iconAfter?: react.JSX.Element | react.FunctionComponent<{
         color?: any;
         size?: any;
     }> | ((props: {

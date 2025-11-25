@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled, Text, GetProps } from '@tamagui/core'
 import { Button as TamaguiButton } from '@tamagui/button'
 
