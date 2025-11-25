@@ -1,5 +1,6 @@
 import React from 'react'
-import { styled, Button as TamaguiButton, Text } from 'tamagui'
+import { styled, Text, GetProps } from '@tamagui/core'
+import { Button as TamaguiButton } from '@tamagui/button'
 
 const COLORS = {
   primary: '#ffc23e',
@@ -20,6 +21,7 @@ const COLORS = {
   disabledShadow: 'none',
 }
 
+// extend the real Tamagui Button; cast style object to any to avoid strict web-only keys errors
 export const ButtonDXPlus = styled(TamaguiButton, {
   name: 'ButtonDXPlus',
   borderRadius: 8,
@@ -77,13 +79,15 @@ export const ButtonDXPlus = styled(TamaguiButton, {
   },
 } as any)
 
-type Props = {
-  children?: React.ReactNode
+// derive the full prop set from the styled component
+type BaseButtonProps = GetProps<typeof ButtonDXPlus>
+
+// expose a simplified public API while reusing underlying props
+export type ButtonProps = Omit<BaseButtonProps, 'variant' | 'size' | 'status'> & {
   variant?: 'primary' | 'secondary'
   size?: 's' | 'm' | 'l'
   status?: 'default' | 'success' | 'error' | 'warning'
-  disabled?: boolean
-  [key: string]: any
+  // keep other underlying Tamagui props available
 }
 
 export function Button({
@@ -93,8 +97,7 @@ export function Button({
   status = 'default',
   disabled = false,
   ...props
-}: Props) {
-  // you can still compute styles and override props before passing to Tamagui Button
+}: ButtonProps) {
   let bgColor = COLORS.primary
   let textColor = COLORS.primaryText
   let borderColor = COLORS.primary
@@ -133,12 +136,12 @@ export function Button({
 
   return (
     <ButtonDXPlus
+      // map to underlying props; cast where necessary to avoid TS conflicts
       variant={variant as any}
-      size={size}
-      disabled={disabled}
-      // prefer Tamagui props for styling, but inline style override is allowed
+      size={size as any}
+      disabled={disabled as any}
       style={{ backgroundColor: bgColor, borderColor }}
-      {...props}
+      {...(props as any)}
     >
       <Text fontWeight={600} color={textColor} alignSelf="center">
         {children}

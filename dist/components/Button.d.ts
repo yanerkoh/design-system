@@ -1,13 +1,13 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import * as _tamagui_core_types from '@tamagui/core/types';
 import * as tamagui from 'tamagui';
-import * as _tamagui_web_types from '@tamagui/web/types';
+import * as _tamagui_core from '@tamagui/core';
+import { GetProps } from '@tamagui/core';
 import React from 'react';
 
-declare const ButtonDXPlus: tamagui.TamaguiComponent<_tamagui_web_types.TamaDefer, tamagui.TamaguiElement, _tamagui_core_types.RNTamaguiViewNonStyleProps & tamagui.TextContextStyles & {
+declare const ButtonDXPlus: tamagui.TamaguiComponent<_tamagui_core.TamaDefer, tamagui.TamaguiElement, _tamagui_core.RNTamaguiViewNonStyleProps & tamagui.TextContextStyles & {
     textProps?: Partial<tamagui.SizableTextProps>;
     noTextWrap?: boolean;
-} & _tamagui_web_types.ThemeableProps & {
+} & _tamagui_core.ThemeableProps & {
     icon?: React.JSX.Element | React.FunctionComponent<{
         color?: any;
         size?: any;
@@ -26,7 +26,7 @@ declare const ButtonDXPlus: tamagui.TamaguiComponent<_tamagui_web_types.TamaDefe
     spaceFlex?: number | boolean;
     scaleSpace?: number;
     unstyled?: boolean;
-}, _tamagui_web_types.StackStyleBase, {
+}, _tamagui_core.StackStyleBase, {
     size?: number | tamagui.SizeTokens | undefined;
     variant?: "outlined" | undefined;
     disabled?: boolean | undefined;
@@ -50,15 +50,13 @@ declare const ButtonDXPlus: tamagui.TamaguiComponent<_tamagui_web_types.TamaDefe
     radiused?: boolean | undefined;
     padded?: boolean | undefined;
     chromeless?: boolean | "all" | undefined;
-}, _tamagui_web_types.StaticConfigPublic>;
-type Props = {
-    children?: React.ReactNode;
+}, _tamagui_core.StaticConfigPublic>;
+type BaseButtonProps = GetProps<typeof ButtonDXPlus>;
+type ButtonProps = Omit<BaseButtonProps, 'variant' | 'size' | 'status'> & {
     variant?: 'primary' | 'secondary';
     size?: 's' | 'm' | 'l';
     status?: 'default' | 'success' | 'error' | 'warning';
-    disabled?: boolean;
-    [key: string]: any;
 };
-declare function Button({ children, variant, size, status, disabled, ...props }: Props): react_jsx_runtime.JSX.Element;
+declare function Button({ children, variant, size, status, disabled, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
 
-export { Button, ButtonDXPlus, Button as default };
+export { Button, ButtonDXPlus, ButtonProps, Button as default };

@@ -3,13 +3,14 @@
 var _chunkV4M2EKNDjs = require('./chunk-V4M2EKND.js');
 
 
-var _chunkK6JYV22Vjs = require('./chunk-K6JYV22V.js');
+var _chunkMFV7GGW6js = require('./chunk-MFV7GGW6.js');
 
 
 var _chunkYG7RJOJNjs = require('./chunk-YG7RJOJN.js');
 
 
 var _chunkKD6A6CYYjs = require('./chunk-KD6A6CYY.js');
+require('./chunk-TEEPPNNE.js');
 
 // src/index.tsx
 var _tamagui = require('tamagui');
@@ -24,4 +25,4 @@ function DesignSystemProvider(props) {
 
 
 
-exports.Button = _chunkK6JYV22Vjs.Button; exports.DesignSystemProvider = DesignSystemProvider; exports.FormGroup = _chunkYG7RJOJNjs.FormGroup; exports.StepIndicator = _chunkKD6A6CYYjs.DXPlusStepIndicator;
+exports.Button = _chunkMFV7GGW6js.Button; exports.DesignSystemProvider = DesignSystemProvider; exports.FormGroup = _chunkYG7RJOJNjs.FormGroup; exports.StepIndicator = _chunkKD6A6CYYjs.DXPlusStepIndicator;

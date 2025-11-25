@@ -4,8 +4,7 @@ import { TamaguiProviderProps } from 'tamagui';
 export { default as Button } from './components/Button.js';
 export { FormGroup } from './components/FormGroup.js';
 export { DXPlusStepIndicator as StepIndicator } from './components/StepIndicator.js';
-import '@tamagui/core/types';
-import '@tamagui/web/types';
+import '@tamagui/core';
 
 declare function DesignSystemProvider(props: Omit<TamaguiProviderProps, 'config'> & {
     children?: React.ReactNode;
