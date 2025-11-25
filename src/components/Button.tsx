@@ -75,7 +75,7 @@ export const ButtonDXPlus = styled(TamaguiButton, {
     transform: 'none',
     boxShadow: 'none',
   },
-})
+} as any)
 
 type Props = {
   children?: React.ReactNode
@@ -133,7 +133,7 @@ export function Button({
 
   return (
     <ButtonDXPlus
-      variant={variant}
+      variant={variant as any}
       size={size}
       disabled={disabled}
       // prefer Tamagui props for styling, but inline style override is allowed

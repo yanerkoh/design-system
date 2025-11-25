@@ -13,7 +13,7 @@
     "*.css"
   ],
   "dependencies": {
-    "@tamagui/core": "*",
+    "@tamagui/core": "^1.138.2",
     "tamagui": "^1.138.2"
   },
   "scripts": {
@@ -21,17 +21,19 @@
     "watch": "tamagui-build --watch"
   },
   "peerDependencies": {
-    "tamagui": "^1.138.2",
-    "@tamagui/core": "^1.138.2",
     "@tamagui/config": "^1.138.2",
+    "@tamagui/core": "^1.138.2",
     "react": ">=18",
-    "react-native": ">=0.71"
+    "react-native": ">=0.71",
+    "tamagui": "^1.138.2"
   },
   "devDependencies": {
-    "tamagui": "^1.138.2",
-    "@tamagui/core": "^1.138.2",
-    "@tamagui/config": "^1.138.2",
     "@tamagui/build": "*",
+    "@tamagui/config": "^1.138.2",
+    "@tamagui/core": "^1.138.2",
+    "@types/react": "^19.2.7",
+    "@types/react-native": "^0.71.13",
+    "tamagui": "^1.138.2",
     "tsup": "^6.0.0"
   }
 }

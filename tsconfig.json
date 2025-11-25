@@ -2,11 +2,25 @@
   "types": ["node", "react"],
   "lib": ["dom", "esnext"],
   "compilerOptions": {
-    "baseUrl": "./", // resolve absolute module names from here
-    "outDir": "dist"
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@tamagui/*": ["node_modules/@tamagui/*"],
+      "tamagui": ["node_modules/tamagui"]
+    }
   },
-  "include": ["./**/*.ts"],
-  "exclude": [
-    "node_modules/**/*"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

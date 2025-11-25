@@ -65,7 +65,7 @@ export function DXPlusStepIndicator({
 
         return (
           <XStack key={i} flex={1} alignItems="center">
-            <YStack ai="center" gap="$1">
+            <YStack alignItems="center" gap="$1">
               <StepCircle status={status}>
                 <Text
                   color={
