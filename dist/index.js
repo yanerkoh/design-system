@@ -1,8 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunkV4M2EKNDjs = require('./chunk-V4M2EKND.js');
-
-
 var _chunkMFV7GGW6js = require('./chunk-MFV7GGW6.js');
 
 
@@ -14,8 +11,21 @@ require('./chunk-TEEPPNNE.js');
 
 // src/index.tsx
 var _tamagui = require('tamagui');
+
+// src/tamagui.config.ts
+var _v4 = require('@tamagui/config/v4');
+
+var config = _tamagui.createTamagui.call(void 0, {
+  ..._v4.defaultConfig,
+  media: {
+    ..._v4.defaultConfig.media
+    // add your own media queries here, if wanted
+  }
+});
+
+// src/index.tsx
 var _jsxruntime = require('react/jsx-runtime');
-var tamaguiConfig = _chunkV4M2EKNDjs.config;
+var tamaguiConfig = config;
 function DesignSystemProvider(props) {
   const providerProps = props;
   return /* @__PURE__ */ _jsxruntime.jsx.call(void 0, _tamagui.TamaguiProvider, { ...providerProps, config: tamaguiConfig, children: props.children });

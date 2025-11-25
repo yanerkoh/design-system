@@ -4,37 +4,24 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "react-native": "dist/index.js",
-  "module:jsx": "dist/jsx",
   "files": [
     "dist",
     "tamagui.config.js"
   ],
-  "sideEffects": [
-    "*.css"
-  ],
-  "dependencies": {
-    "@tamagui/core": "^1.138.2",
-    "tamagui": "^1.138.2"
-  },
   "scripts": {
-    "build": "tsup src/index.tsx src/tamagui.config.ts src/components/**/*.tsx --dts --format esm,cjs --splitting",
-    "watch": "tamagui-build --watch"
+    "build": "tsup src/index.tsx src/tamagui.config.js src/components/**/*.tsx --dts --format esm,cjs --splitting"
   },
   "peerDependencies": {
-    "@tamagui/config": "^1.138.2",
-    "@tamagui/core": "^1.138.2",
     "react": ">=18",
     "react-native": ">=0.71",
-    "tamagui": "^1.138.2"
+    "tamagui": "^1.138.2",
+    "@tamagui/core": "^1.138.2",
+    "@tamagui/config": "^1.138.2"
   },
   "devDependencies": {
-    "@tamagui/build": "*",
-    "@tamagui/config": "^1.138.2",
-    "@tamagui/core": "^1.138.2",
+    "typescript": "^5.0.0",
     "@types/react": "^19.2.7",
     "@types/react-native": "^0.71.13",
-    "tamagui": "^1.138.2",
     "tsup": "^6.0.0"
   }
 }
